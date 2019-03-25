@@ -12,7 +12,6 @@ def get_raw_documents():
     :return:  列表数据的list格式数据 ["xxx xxx xxx","abc dd bb"]
     '''
     df_all = pd.read_csv(config.data_csv_path, encoding='utf8')
-    df_all['penalty'] = df_all['penalty'] - 1
     documents = df_all['content'].values
     LOGGER.log('documents number %d' % len(documents))
     return documents
@@ -41,11 +40,16 @@ def train_word2vec(texts):
     w2v = Word2Vec(texts, size=config.w2v_dim, window=5, iter=15, workers=12, seed=config.seed)
     w2v.save(config.model_w2v)
     LOGGER.log('Save done!')
+    return w2v
 
 def main():
     documents = get_raw_documents()
     words_list = get_words_list(documents)
-    train_word2vec(words_list)
+    w2v = train_word2vec(words_list)
+    print(w2v.most_similar("物品"))
+    # 词对应的向量表示
+    print(w2v.wv.word_vec("物品"))
+
 
 if __name__ == "__main__":
     main()
