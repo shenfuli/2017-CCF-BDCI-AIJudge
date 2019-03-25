@@ -62,7 +62,7 @@ def load_data(data_path, stopwords):
     :return:  返回  id  content penalty  laws 的数据结构，其中： test数据仅 id content 格式的结构
     '''
     data_list = []
-    for i, line in enumerate(open(data_path)):
+    for i, line in enumerate(codecs.open(data_path,encoding='utf-8')):
         if i % 1000 == 1:
             LOGGER.log('iter = %d' % i)
         segs = line.split('\t')
