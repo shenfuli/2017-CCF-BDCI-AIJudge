@@ -24,4 +24,9 @@ class Config:
 
     feat_d2v="/Users/zhengwenjie/AI/work/ML_3/2017-CCF-BDCI-AIJudge/data/output/corpus/doc_for_d2v_12w.txt"
 
+    # doc2vec
+    model_d2v_dbow = "/Users/zhengwenjie/AI/work/ML_3/2017-CCF-BDCI-AIJudge/data/output/model/dbow_d2v_12w.model"
+    model_d2v_dm = "/Users/zhengwenjie/AI/work/ML_3/2017-CCF-BDCI-AIJudge/data/output/model/dm_d2v_12w.model"
+
+
     aab=""
