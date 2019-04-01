@@ -3,7 +3,6 @@ import sys
 sys.path.append("/Users/zhengwenjie/AI/work/ML_3/2017-CCF-BDCI-AIJudge")
 
 import codecs
-import subprocess
 from collections import namedtuple
 
 import numpy as np
@@ -13,7 +12,6 @@ from sklearn.cross_validation import cross_val_score
 from sklearn.linear_model import LogisticRegression
 from utils import LOGGER
 from config.db_config import Config
-import random
 
 config = Config()
 
@@ -27,7 +25,6 @@ def write_d2v_data_path(content_list):
 
 SentimentDocument = namedtuple('SentimentDocument', 'words tags')
 class Doc_list(object):
-
     def __init__(self, f):
         self.f = f
     def __iter__(self):
@@ -36,7 +33,6 @@ class Doc_list(object):
             tags = [int(words[0][2:])]
             words = words[1:]
             yield SentimentDocument(words,tags)
-
 
 def main():
     data_df = pd.read_csv(config.data_csv_path, encoding='utf-8')
@@ -67,7 +63,8 @@ def main():
         '''
         scores = cross_val_score(LogisticRegression(C=3.0),X_d2v,y,cv=5) #ross_val_score(lasso, X, y)
         LOGGER.log('dbow: ' + str(scores) + ' ' + str(np.mean(scores)))
-
+    d2v.save(config.model_d2v_dbow)
+    LOGGER.log('Save done!')
 
     print("distributed memory..........")
     d2v = Doc2Vec(dm=1, size=100, negative=5, hs=0, min_count=3, window=30, sample=1e-5, workers=8, alpha=0.025,
@@ -79,7 +76,8 @@ def main():
         X_d2v = np.array([d2v.docvecs[i] for i in range(rows)])
         scores = cross_val_score(LogisticRegression(C=3.0), X_d2v, y, cv=5)  # ross_val_score(lasso, X, y)
         LOGGER.log('dm: ' + str(scores) + ' ' + str(np.mean(scores)))
-
+    d2v.save(config.model_d2v_dm)
+    LOGGER.log('Save done!')
 
 if __name__=="__main__":
     main()
