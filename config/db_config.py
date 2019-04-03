@@ -2,7 +2,7 @@ class Config:
     stop_words_path = "/home/julyedu_41116/2017-CCF-BDCI-AIJudge/data/input/stopwords.txt"
     train_data_path = "/home/julyedu_41116/2017-CCF-BDCI-AIJudge/data/input/train_small.txt"
     test_data_path = "/home/julyedu_41116/2017-CCF-BDCI-AIJudge/data/input/test_small.txt"
-    data_csv_path = "/home/julyedu_41116/2017-CCF-BDCI-AIJudge/data/output/corpus/data.csv"
+    data_csv_path = "/Users/zhengwenjie/AI/work/ML_3/2017-CCF-BDCI-AIJudge/data/output/corpus/data.csv"
     data_label_path = "/home/julyedu_41116/2017-CCF-BDCI-AIJudge/data/output/corpus/data_label.txt"
     cv_train_num = 100000  # 用于交叉验证
     train_num = 120000
