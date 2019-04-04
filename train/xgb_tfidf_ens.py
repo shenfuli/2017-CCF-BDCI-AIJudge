@@ -1,7 +1,7 @@
 # -*- encoding:utf-8 -*-
 import sys
 
-sys.path.append("/home/julyedu_41116/2017-CCF-BDCI-AIJudge")
+sys.path.append("D:/ML_Study/2017-CCF-BDCI-AIJudge")
 
 import numpy as np
 import pandas as pd
@@ -10,10 +10,8 @@ from utils import LOGGER
 from config.db_config import Config
 
 import warnings
-
 warnings.filterwarnings('ignore')
 config = Config()
-
 
 def main():
     print("hello")
