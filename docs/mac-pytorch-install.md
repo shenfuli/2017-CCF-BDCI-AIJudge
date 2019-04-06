@@ -24,7 +24,9 @@ Successfully installed torch-1.0.0
 
 ```
 ## 3. verfication pytorch program 
-ipython enter function pages： 
+ipython 
+
+enter function pages： 
 
 ===> 
 ```
